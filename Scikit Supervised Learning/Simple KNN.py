@@ -31,6 +31,7 @@ y_pred = knn.predict(X)
 new_prediction = knn.predict(X_new)
 print("Prediction: {}".format(new_prediction))
 
-#Model Performance
+#Model Performance (again this is a simple version to see the moving parts)
+print(knn.score(X, y))
 
 
