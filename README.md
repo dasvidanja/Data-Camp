@@ -1,5 +1,5 @@
 # Data-Camp
-This is a repository contatining material that I have encountered during the completion of Data Camp resources. Most of the code has been indeed written by me, 
+This is a repository contatining material that I have encountered during the completion of Data Camp courses. Most of the code has been indeed written by me, 
 but it has been originally formulated by the data camp team. Hence, the credit does indeed go to them. Of course, there are modifications/altercations made by me 
 and as well comments/explanation to aid my understanding better. 
 
