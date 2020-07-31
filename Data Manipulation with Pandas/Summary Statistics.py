@@ -52,3 +52,4 @@ def iqr(column):
 print(sales[["temperature_c", "fuel_price_usd_per_l", "unemployment"]].agg([iqr,np.median]))
 
 
+
