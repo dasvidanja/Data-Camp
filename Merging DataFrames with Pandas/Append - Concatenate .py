@@ -44,3 +44,27 @@ quarter1 = pd.concat(units, axis='rows')
 # Print slices from quarter1
 print(quarter1.loc['jan 27, 2015':'feb 2, 2015'])
 print(quarter1.loc['feb 26, 2015':'mar 7, 2015'])
+
+# Add 'year' column to names_1881 and names_1981
+names_1881['year'] = 1881
+names_1981['year'] = 1981
+
+# Append names_1981 after names_1881 with ignore_index=True: combined_names
+combined_names = pd.concat([names_1881,names_1981], ignore_index=True)
+
+# Print shapes of names_1981, names_1881, and combined_names
+print(names_1981.shape)
+print(names_1881.shape)
+print(combined_names.shape)
+
+# Print all rows that contain the name 'Morgan'
+print(combined_names[ combined_names['name']=='Morgan'])
+
+# Create a list of weather_max and weather_mean
+weather_list = [weather_max,weather_mean]
+
+# Concatenate weather_list horizontally
+weather = pd.concat(weather_list, axis=1)
+
+# Print weather
+print(weather)
