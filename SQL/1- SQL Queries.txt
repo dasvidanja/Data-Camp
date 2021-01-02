@@ -1,0 +1,163 @@
+#OneColumn
+SELECT name FROM people 
+
+#MultipleColumns
+SELECT title, release_year, country
+FROM films;
+
+#AllColumns
+SELECT *
+FROM films;
+
+#Set
+SELECT DISTINCT country
+FROM films
+
+#RowNumber
+SELECT COUNT(*)
+FROM people;
+
+#CountSetNonNullColumn
+SELECT COUNT(DISTINCT(birthdate))
+FROM people;
+
+#ConditionStatement
+SELECT * 
+FROM films
+WHERE release_year= 2016
+
+#ConditionStatementAND
+SELECT title, release_year
+FROM films
+WHERE language='Spanish' 
+AND  release_year< 2000
+
+#ConditionStatementAND
+SELECT *
+FROM films
+WHERE language='Spanish'
+AND release_year>2000 
+AND  release_year< 2010
+
+#OrCondition
+SELECT title, release_year
+FROM films
+WHERE (release_year >= 1990 AND release_year < 2000)
+AND (language = 'French' OR language = 'Spanish')
+AND gross>2000000
+
+#Between
+SELECT title, release_year
+FROM films
+WHERE release_year BETWEEN 1990 AND 2000
+AND budget > 100000000
+AND (language = 'Spanish' or language='French');
+
+#IN
+SELECT title, release_year
+FROM films
+WHERE release_year IN (1990, 2000)
+AND duration > 120
+
+#Null
+SELECT name
+FROM people
+WHERE deathdate IS NULL
+
+#LIKE
+SELECT name
+FROM people
+WHERE name LIKE ('B%')
+
+#NotLike
+SELECT name
+FROM people
+WHERE name NOT LIKE ('A%')
+
+#Algebra
+SELECT SUM(duration)
+FROM films
+
+SELECT AVG(duration)
+FROM films
+
+SELECT MIN(duration)
+FROM films
+
+SELECT MAX(duration)
+FROM films
+
+#MIXAlgebraWhere
+SELECT AVG(gross)
+FROM films
+WHERE title LIKE ('A%')
+
+#Alias
+SELECT title, 
+      (gross-budget) AS net_profit
+FROM films;
+
+#OrderAscending
+SELECT name 
+FROM people
+ORDER BY name  
+
+#OrderDescending
+SELECT title
+FROM films
+ORDER BY title DESC
+
+SELECT birthdate, name
+FROM people
+ORDER BY birthdate
+
+SELECT title
+FROM films
+WHERE release_year in ( 2000, 2012)
+ORDER BY release_year
+
+#StartByM
+SELECT title, gross
+FROM films
+WHERE title LIKE ('M%')
+ORDER BY title
+
+#MultipleSort
+SELECT birthdate, name
+FROM people
+ORDER BY birthdate, name
+
+#GroupBy
+SELECT release_year, count(*)
+FROM films
+GROUP BY release_year
+
+
+#PuttingItTogether
+SELECT release_year,country, MAX(budget)
+FROM films
+GROUP BY release_year, country
+ORDER BY release_year, country
+
+#Having(GROUPBYAndCondition)
+SELECT release_year
+FROM films
+GROUP BY release_year
+HAVING COUNT(*) > 200
+
+
+#AllTogether
+SELECT release_year, AVG(budget) AS avg_budget, AVG(gross) AS avg_gross
+FROM films
+WHERE release_year > 1990
+GROUP BY release_year
+HAVING AVG(budget) > 60000000
+ORDER BY AVG(gross) DESC
+
+SELECT country, AVG(budget) AS avg_budget, 
+AVG(gross) AS avg_gross
+FROM films
+GROUP BY country
+HAVING COUNT(country) > 10
+ORDER BY country
+LIMIT 5
